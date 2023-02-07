@@ -13,7 +13,5 @@ while(True):
     ans = list(combinations(arr[1:],6))
     for _ in ans:
         # 튜플을 배열로 전환시켜 정렬해준다.
-        temp = list(_)
-        temp.sort()
-        print(*temp)
+        print(*_,sep='')
     print()
