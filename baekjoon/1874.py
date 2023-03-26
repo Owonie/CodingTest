@@ -1,28 +1,23 @@
 # 시간제한 2초
-from collections import deque
+import sys
+input = sys.stdin.readline
 
 n = int(input())
-arr = []
 s = []
 ans = []
+cnt = 1
+
 for _ in range(n):
-    arr.append(int(input().strip()))
-arr.append(0)
-for i in range(1,n+1):
-    if i == 1:
-        s.append(i)
+    temp = int(input())
+    while cnt <= temp:
+        s.append(cnt)
         ans.append('+')
-    elif s[-1] == arr[i-1]:
+        cnt += 1
+    if s[-1] == temp:
         s.pop()
         ans.append('-')
-    elif i == arr[i-1]:
-        ans.append('+')
-        ans.append('-')
-    elif i > arr[i-1]:
-        if i != s[-1]:
-            ans = ['NO']
-            break
-    elif i < arr[i-1]:
-        s.append(i)
-        ans.append('+')
-print(*ans,end='\n')
+    else:
+        ans = ['NO']
+        break
+for i in ans:
+    print(i)
